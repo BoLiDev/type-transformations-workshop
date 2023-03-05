@@ -1,4 +1,5 @@
-type NonEmptyArray = unknown;
+//NOTE: Boom
+type NonEmptyArray<T> = [T, ...Array<T>];
 
 export const makeEnum = (values: NonEmptyArray<string>) => {};
 

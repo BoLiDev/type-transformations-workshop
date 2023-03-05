@@ -6,7 +6,10 @@ interface Attributes {
   age: number;
 }
 
-type AttributeGetters = unknown;
+// NOTE: Map object type to
+type AttributeGetters = {
+  [Key in keyof Attributes]: () => Attributes[Key];
+};
 
 type tests = [
   Expect<
@@ -18,5 +21,5 @@ type tests = [
         age: () => number;
       }
     >
-  >,
+  >
 ];

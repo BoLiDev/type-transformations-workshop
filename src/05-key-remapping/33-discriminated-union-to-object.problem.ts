@@ -12,7 +12,10 @@ type Route =
   | { route: "/admin"; search: {} }
   | { route: "/admin/users"; search: {} };
 
-type RoutesObject = unknown;
+// Think in loop programming
+type RoutesObject = {
+  [K in Route as K["route"]]: K["search"];
+};
 
 type tests = [
   Expect<
@@ -28,5 +31,5 @@ type tests = [
         "/admin/users": {};
       }
     >
-  >,
+  >
 ];

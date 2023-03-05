@@ -8,7 +8,10 @@ interface Example {
   groupId: string;
 }
 
-type OnlyIdKeys<T> = unknown;
+// conditional type + never act as a filter
+type OnlyIdKeys<T> = {
+  [K in keyof T as K extends "id" | `${string}Id` ? K : never]: T[K];
+};
 
 type tests = [
   Expect<

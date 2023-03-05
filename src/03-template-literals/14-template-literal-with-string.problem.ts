@@ -1,4 +1,5 @@
-type Route = unknown;
+// NOTE: usually we do regex validation, but this can warn the developers ealier
+type Route = `/${string}`;
 
 export const goToRoute = (route: Route) => {};
 

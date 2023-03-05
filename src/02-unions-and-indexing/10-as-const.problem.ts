@@ -4,6 +4,8 @@ import { Equal, Expect } from "../helpers/type-utils";
  * Some docs that might help!
  * https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-4.html#const-assertions
  */
+
+// NOTE: readonly property, Object.freeze only works on the first level
 export const programModeEnumMap = {
   GROUP: "group",
   ANNOUNCEMENT: "announcement",
@@ -11,7 +13,7 @@ export const programModeEnumMap = {
   SELF_DIRECTED: "selfDirected",
   PLANNED_ONE_ON_ONE: "planned1on1",
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
-};
+} as const;
 
 export type GroupProgram = typeof programModeEnumMap["GROUP"];
 export type AnnouncementProgram = typeof programModeEnumMap["ANNOUNCEMENT"];
@@ -28,5 +30,5 @@ type tests = [
   Expect<Equal<OneOnOneProgram, "1on1">>,
   Expect<Equal<SelfDirectedProgram, "selfDirected">>,
   Expect<Equal<PlannedOneOnOneProgram, "planned1on1">>,
-  Expect<Equal<PlannedSelfDirectedProgram, "plannedSelfDirected">>,
+  Expect<Equal<PlannedSelfDirectedProgram, "plannedSelfDirected">>
 ];

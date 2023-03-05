@@ -6,8 +6,9 @@ interface Attributes {
   age: number;
 }
 
+// NOTE: as keyword (key remapper) + Capitalize intrinsic utitly
 type AttributeGetters = {
-  [K in keyof Attributes]: () => Attributes[K];
+  [K in keyof Attributes as `get${Capitalize<K>}`]: () => Attributes[K];
 };
 
 type tests = [

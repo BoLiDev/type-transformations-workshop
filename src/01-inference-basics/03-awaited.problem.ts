@@ -8,8 +8,12 @@ const getUser = () => {
   });
 };
 
-type ReturnValue = ReturnType<typeof getUser>;
+// type PromiseValue<T> = T extends Promise<infer R> ? R : never;
+// type ReturnValue = PromiseValue<ReturnType<typeof getUser>>;
+
+// TODO: How awaited is implemented
+type ReturnValue = Awaited<ReturnType<typeof getUser>>;
 
 type tests = [
-  Expect<Equal<ReturnValue, { id: string; name: string; email: string }>>,
+  Expect<Equal<ReturnValue, { id: string; name: string; email: string }>>
 ];
